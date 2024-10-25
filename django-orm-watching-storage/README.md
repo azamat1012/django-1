@@ -26,10 +26,10 @@
 
    Пример:
    ```env
-   DEBUG=False
-   postgres://USER:PASSWORD@HOST:PORT/NAME
+   DATABASE_URL://USER:PASSWORD@HOST:PORT/NAME
    SECRET_KEY=ваш_секретный_ключ
    ALLOWED_HOSTS=localhost,127.0.0.1
+   DEBUG=False
    ```
 
 
