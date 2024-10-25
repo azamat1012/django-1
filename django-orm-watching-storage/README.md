@@ -5,7 +5,7 @@
 ## Требования
 
 Перед запуском проекта убедитесь, что у вас установлены:
-- Python 3.8 или более поздняя версия
+- Python 3.2 или более поздняя версия
 - Pip (менеджер пакетов Python)
 
 ## Установка
@@ -26,13 +26,9 @@
 
    Пример:
    ```env
-   ENGINE=django.db.backends.postgresql_psycopg2
-   HOST=checkpoint.devman.org
-   PORT=5434
-   NAME=Tom
-   USER=guard
-   PASSWORD=xxx
    DEBUG=False
+   postgres://USER:PASSWORD@HOST:PORT/NAME
+   SECRET_KEY=ваш_секретный_ключ
    ALLOWED_HOSTS=localhost,127.0.0.1
    ```
 
@@ -46,7 +42,7 @@
 
 2. **Запустите сервер:**
    ```bash
-   python manage.py runserver 0.0.0.0:8000
+   python manage.py runserver 
    ```
 
 3. **Откройте в браузере:**
