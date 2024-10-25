@@ -1,40 +1,25 @@
 from environs import Env
+import dj_database_url
 import os
 
-# Инициализация environs
 env = Env()
 env.read_env()
 
-# Получаем переменные окружения
-ENGINE = env.str("ENGINE")
-HOST = env.str("HOST")
-PORT = env.int("PORT")
-NAME = env.str("NAME")
-USER = env.str("user")
-PASSWORD = env.str("PASSWORD")
+DATABASE_URL = env.str("DATABASE_URL")
 
 DATABASES = {
-    'default': {
-        'ENGINE': ENGINE,
-        'HOST': HOST,
-        'PORT': PORT,
-        'NAME': NAME,
-        'USER': USER,
-        'PASSWORD': PASSWORD,
-    }
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = env.str("SECRET_KEY")
 
 DEBUG = env.bool("DEBUG", default=False)
 
-
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
@@ -45,13 +30,8 @@ TEMPLATES = [
     },
 ]
 
-
 USE_L10N = True
-
 LANGUAGE_CODE = 'ru-ru'
-
 TIME_ZONE = 'Europe/Moscow'
-
 USE_TZ = True
-
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
